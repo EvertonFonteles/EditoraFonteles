@@ -1,0 +1,9 @@
+Options -Indexes
+RewriteEngine On
+# O Apache do XAMPP serve o projeto em /fonteles/public/.
+# Bloqueia acesso web a código interno, configuração, SQL e metadados Git.
+RewriteRule ^(?:app|config|database|scripts|tests|docs|\.git)(?:/|$) - [F,L,NC]
+RewriteRule ^$ public/ [R=302,L]
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
